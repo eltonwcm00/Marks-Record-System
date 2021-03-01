@@ -27,7 +27,6 @@ class StudentMarks
         int found=0, ID;
         char choice;
         
-        
             cout << "Please Enter Student ID to delete: ";
             cin >> ID;
             found = linearSearch(ID);
@@ -45,7 +44,7 @@ class StudentMarks
             cin >> choice;
 
             if(choice == 'Y' || choice == 'y'){
-                student[found].id = 0; student[found].name = " "; student[found].chem=0; student[found].phy=0; student[found].math=0;
+                student[found].id=-1; student[found].name = " "; student[found].chem=-1; student[found].phy=-1; student[found].math=-1;
             }
             
             }else{
