@@ -22,7 +22,7 @@ class StudentMarks
        
     }
 
-    Student deleteStudent()
+    void deleteStudent()
     {
         int found=0, ID;
         char choice;
