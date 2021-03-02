@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-const int SIZE = 10;
+const int SIZE = 100;
 
 class StudentMarks {
 
@@ -12,33 +12,57 @@ class StudentMarks {
             string name;
             int id, chem, math, phy;
         };
-   
+
         Student student[SIZE];
+
+        int number{};
+
 
     public:
 
-        StudentMarks() {}
+        StudentMarks() = default;
+
+        void addStudent() {
+
+            int studentHash[SIZE];
+
+            cout << "How many record of students you would like to insert ? : ";
+            cin >> number;
+
+            for(int x = 0; x < number; x++) {
+
+                cout << "\nStudent "<< x + 1<<" ID [In the form of 4 digits, 1XXX - 9XXX] : ";
+                cin >> student[x].id;
+
+                while(student[x].id < 1000 || student[x].id > 9999) {
+
+                    cout << "Input out of range."<<endl<<endl;
+                    cout << "Enter student "<< x + 1<<" ID again! [In the form of 4 digits, start with 1XXX] : ";
+                    cin >> student[x].id;
+                }
+
+                cout << "Student " << x+1 << " name : ";
+                cin >> student[x].name;
+                cout << "Chemistry marks of student "<< x+1 <<" : ";
+                cin >> student[x].chem;
+                cout << "Physic marks of student "<< x+1 <<" : ";
+                cin >> student[x].phy;
+                cout << "Mathematics marks of student "<< x+1 <<" : ";
+                cin >> student[x].math;
+
+                cout<<endl;
+            }
+
+            linearHashing();
+
+        }
 
         void deleteStudent() {
 
-            Student temp[SIZE];
-            int found=0, ID;
+            Student temp[number];
+            int found = 0, ID;
             char choice;
-//
-//            /*          Testing          */
-//            for(int i=0; i<2; i++){
-//                cout << "Student " << i+1 << " ID: ";
-//                cin >> student[i].id;
-//                cout << "Student " << i+1 << " name: ";
-//                cin >> student[i].name;
-//                cout << "chemistry: ";
-//                cin >> student[i].chem;
-//                cout << "Phy: ";
-//                cin >> student[i].phy;
-//                cout << "math: " ;
-//                cin >> student[i].math;
-//           }
-//            /*          End Test        */
+
             cout << "Please Enter Student ID to delete: ";
             cin >> ID;
 
@@ -59,18 +83,17 @@ class StudentMarks {
 
                 if(choice == 'Y' || choice == 'y') {
 
-                    for(int i=0; i<SIZE; i++) {
+                    for(int i = 0; i < number; i++) {
 
                         temp[i] = student[i];
                     }
 
-                    for(int i=0; i<SIZE; i++) {
+                    for(int i = 0; i < number; i++) {
 
                         if(temp[i].id != ID) {
-                            student[i]=temp[i];
+                            student[i] = temp[i];
                         }
                     }
-                    //student[found].id=-1; student[found].name = " "; student[found].chem=-1; student[found].phy=-1; student[found].math=-1;
                 }
             
             } else {
@@ -80,25 +103,11 @@ class StudentMarks {
     }
 
 
-        void search() {
+        void searchStudent() {
 
             int value, found = 0;
             char choice;
-//
-//            /*          Testing          */
-//            for(int i=0; i<2; i++){
-//                cout << "Student " << i+1 << " ID: ";
-//                cin >> student[i].id;
-//                cout << "Student " << i+1 << " name: ";
-//                cin >> student[i].name;
-//                cout << "chemistry: ";
-//                cin >> student[i].chem;
-//                cout << "Phy: ";
-//                cin >> student[i].phy;
-//                cout << "math: " ;
-//                cin >> student[i].math;
-//            }
-//            /*          End Test        */
+
             do {
 
                 cout << "Please Enter Student ID to search: ";
@@ -125,31 +134,47 @@ class StudentMarks {
                 cin >> choice;
 
             } while(choice != 'Y' || choice != 'y');
-
         }
 
+        /************************** ALGORITHM **************************/
+
+        // - Linear Searching
         int linearSearch(int value) {
 
-            for (int i=0; i<=SIZE; i++) {
+            for (int i = 0; i <= number; i++) {
 
-                if (student[i].id == value)
+                if (student[i].id == value) {
+
                     return i;
+                }
+
             }
 
             return -1;
         }
 
+        // - Linear Probing Hash Table
+        void linearHashing() {
+
+            int studentHash[SIZE];
+
+            for(int x = 0; x < number; x++) {
+
+                studentHash[x] = student[x].id / 100;
+            }
+        }
 };
 
 int main() {
 
-    //Student s[SIZE];
     StudentMarks sm;
     string name;
     int value, found;
     char grade;
 
+    sm.addStudent();
     sm.deleteStudent();
+    sm.searchStudent();
 
     return 0;
 }
