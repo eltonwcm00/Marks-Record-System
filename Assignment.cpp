@@ -1,24 +1,21 @@
 #include<iostream>
 using namespace std;
 
-const int SIZE = 100;
+const int SIZE = 10;
 
 class StudentMarks
 {
  private:
-struct Student
-    {
-        string name;
-        int id, chem, math, phy;
-    };
+    struct Student
+        {
+            string name;
+            int id, chem, math, phy;
+        };
    
     Student student[SIZE];
     int head,tail;
 
  public:
-
-     
-
 
     StudentMarks()
     {
@@ -27,6 +24,7 @@ struct Student
 
     void deleteStudent()
     {
+        Student temp[SIZE];
         int found=0, ID;
         char choice;
 
@@ -61,7 +59,15 @@ struct Student
             cin >> choice;
 
             if(choice == 'Y' || choice == 'y'){
-                student[found].id=-1; student[found].name = " "; student[found].chem=-1; student[found].phy=-1; student[found].math=-1;
+                for(int i=0; i<SIZE; i++){
+                        temp[i] = student[i];
+                }
+
+                for(int i=0; i<SIZE; i++){
+                    if(temp[i].id != ID)
+                        student[i]=temp[i];
+                }
+                //student[found].id=-1; student[found].name = " "; student[found].chem=-1; student[found].phy=-1; student[found].math=-1;
             }
             
             }else{
