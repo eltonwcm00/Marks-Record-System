@@ -124,7 +124,7 @@ class StudentMarks {
                 cout << "Search again?[Y/N] ";
                 cin >> choice;
 
-            } while(choice != 'Y' || choice != 'y');
+            } while(choice == 'Y' || choice == 'y');
 
         }
 
