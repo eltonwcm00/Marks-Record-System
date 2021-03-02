@@ -6,17 +6,20 @@ const int SIZE = 100;
 class StudentMarks
 {
  private:
-
-    struct Student
+struct Student
     {
         string name;
         int id, chem, math, phy;
     };
-
+   
     Student student[SIZE];
     int head,tail;
 
  public:
+
+     
+
+
     StudentMarks()
     {
        
@@ -26,7 +29,21 @@ class StudentMarks
     {
         int found=0, ID;
         char choice;
-        
+
+        /*          Testing          */                   
+        for(int i=0; i<2; i++){
+        cout << "Student " << i+1 << " ID: ";
+        cin >> student[i].id;
+        cout << "Student " << i+1 << " name: ";
+        cin >> student[i].name;
+         cout << "chemistry: ";
+        cin >> student[i].chem;
+         cout << "Phy: ";
+        cin >> student[i].phy;
+         cout << "math: " ;
+        cin >> student[i].math;
+        }
+        /*          End Test        */
             cout << "Please Enter Student ID to delete: ";
             cin >> ID;
             found = linearSearch(ID);
@@ -40,7 +57,7 @@ class StudentMarks
             cout << "\n\t1.Physics: " << student[found].phy;
             cout << "\n\t1.Mathematics: " << student[found].math;
 
-            cout << "Are you sure want to delete? [Y/N] ";
+            cout << "\n\nAre you sure want to delete? [Y/N] ";
             cin >> choice;
 
             if(choice == 'Y' || choice == 'y'){
@@ -52,10 +69,26 @@ class StudentMarks
             }
     }
 
+
     void search()
     {
         int value, found=0;
         char choice;
+
+        /*          Testing          */                   
+        for(int i=0; i<2; i++){
+        cout << "Student " << i+1 << " ID: ";
+        cin >> student[i].id;
+        cout << "Student " << i+1 << " name: ";
+        cin >> student[i].name;
+         cout << "chemistry: ";
+        cin >> student[i].chem;
+         cout << "Phy: ";
+        cin >> student[i].phy;
+         cout << "math: " ;
+        cin >> student[i].math;
+        }
+        /*          End Test        */
         do{
             cout << "Please Enter Student ID to search: ";
             cin >> value;
@@ -90,4 +123,21 @@ class StudentMarks
         }
         return -1;	
     }
+
 };
+
+int main()
+{
+    //Student s[SIZE];
+    StudentMarks sm;
+    string name;
+    int value, found;
+    char grade;
+
+    sm.deleteStudent();
+
+    
+
+    return 0;
+}
+
