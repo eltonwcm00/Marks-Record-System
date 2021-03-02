@@ -67,10 +67,10 @@ RM = "C:\Users\Acer\AppData\Local\JetBrains\CLion 2020.2.3\bin\cmake\win\bin\cma
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "C:\Users\Acer\Desktop\DCP5301 - DSA FInal Project"
+CMAKE_SOURCE_DIR = "C:\Users\Acer\Desktop\DCP5301 DSA Finals Project"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\Users\Acer\Desktop\DCP5301 - DSA FInal Project\cmake-build-debug"
+CMAKE_BINARY_DIR = "C:\Users\Acer\Desktop\DCP5301 DSA Finals Project\cmake-build-debug"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -99,9 +99,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Acer\Desktop\DCP5301 - DSA FInal Project\cmake-build-debug\CMakeFiles" "C:\Users\Acer\Desktop\DCP5301 - DSA FInal Project\cmake-build-debug\CMakeFiles\progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Acer\Desktop\DCP5301 DSA Finals Project\cmake-build-debug\CMakeFiles" "C:\Users\Acer\Desktop\DCP5301 DSA Finals Project\cmake-build-debug\CMakeFiles\progress.marks"
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Acer\Desktop\DCP5301 - DSA FInal Project\cmake-build-debug\CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Acer\Desktop\DCP5301 DSA Finals Project\cmake-build-debug\CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -130,17 +130,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named DCP5301___DSA_FInal_Project
+# Target rules for targets named DCP5301___DSA_Final_Project
 
 # Build rule for target.
-DCP5301___DSA_FInal_Project: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 DCP5301___DSA_FInal_Project
-.PHONY : DCP5301___DSA_FInal_Project
+DCP5301___DSA_Final_Project: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 DCP5301___DSA_Final_Project
+.PHONY : DCP5301___DSA_Final_Project
 
 # fast build rule for target.
-DCP5301___DSA_FInal_Project/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\DCP5301___DSA_FInal_Project.dir\build.make CMakeFiles/DCP5301___DSA_FInal_Project.dir/build
-.PHONY : DCP5301___DSA_FInal_Project/fast
+DCP5301___DSA_Final_Project/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DCP5301___DSA_Final_Project.dir\build.make CMakeFiles/DCP5301___DSA_Final_Project.dir/build
+.PHONY : DCP5301___DSA_Final_Project/fast
 
 Assignment.obj: Assignment.cpp.obj
 
@@ -148,7 +148,7 @@ Assignment.obj: Assignment.cpp.obj
 
 # target to build an object file
 Assignment.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\DCP5301___DSA_FInal_Project.dir\build.make CMakeFiles/DCP5301___DSA_FInal_Project.dir/Assignment.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DCP5301___DSA_Final_Project.dir\build.make CMakeFiles/DCP5301___DSA_Final_Project.dir/Assignment.cpp.obj
 .PHONY : Assignment.cpp.obj
 
 Assignment.i: Assignment.cpp.i
@@ -157,7 +157,7 @@ Assignment.i: Assignment.cpp.i
 
 # target to preprocess a source file
 Assignment.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\DCP5301___DSA_FInal_Project.dir\build.make CMakeFiles/DCP5301___DSA_FInal_Project.dir/Assignment.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DCP5301___DSA_Final_Project.dir\build.make CMakeFiles/DCP5301___DSA_Final_Project.dir/Assignment.cpp.i
 .PHONY : Assignment.cpp.i
 
 Assignment.s: Assignment.cpp.s
@@ -166,7 +166,7 @@ Assignment.s: Assignment.cpp.s
 
 # target to generate assembly for a file
 Assignment.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\DCP5301___DSA_FInal_Project.dir\build.make CMakeFiles/DCP5301___DSA_FInal_Project.dir/Assignment.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DCP5301___DSA_Final_Project.dir\build.make CMakeFiles/DCP5301___DSA_Final_Project.dir/Assignment.cpp.s
 .PHONY : Assignment.cpp.s
 
 # Help Target
@@ -177,7 +177,7 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... DCP5301___DSA_FInal_Project
+	@echo ... DCP5301___DSA_Final_Project
 	@echo ... Assignment.obj
 	@echo ... Assignment.i
 	@echo ... Assignment.s

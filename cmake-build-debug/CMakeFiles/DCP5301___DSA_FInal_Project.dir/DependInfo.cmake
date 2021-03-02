@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Users/Acer/Desktop/DCP5301 - DSA FInal Project/Assignment.cpp" "C:/Users/Acer/Desktop/DCP5301 - DSA FInal Project/cmake-build-debug/CMakeFiles/DCP5301___DSA_FInal_Project.dir/Assignment.cpp.obj"
+  "C:/Users/Acer/Desktop/DCP5301 DSA Finals Project/Assignment.cpp" "C:/Users/Acer/Desktop/DCP5301 DSA Finals Project/cmake-build-debug/CMakeFiles/DCP5301___DSA_Final_Project.dir/Assignment.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
