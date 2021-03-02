@@ -17,10 +17,7 @@ class StudentMarks
 
  public:
 
-    StudentMarks()
-    {
-       
-    }
+    StudentMarks(){}
 
     void deleteStudent()
     {
