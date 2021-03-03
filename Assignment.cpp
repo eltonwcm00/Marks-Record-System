@@ -22,6 +22,8 @@ class StudentMarks {
 
         void addStudent() {
 
+            int studentHash[SIZE];
+
             cout<<"How many record of students you would like to insert ? : ";
             cin>>number;
 
@@ -51,7 +53,17 @@ class StudentMarks {
                 cout<<endl;
             }
 
-            linearHashing();
+            cout<<"Hash Table\n----------\n"<<endl;
+            cout<<"ID\tKey Index"<<endl;
+
+            for(int y=0; y<number; y++) {
+
+                studentHash[y] = student[y].id % SIZE;
+
+                /****** linear probing implementation ******/
+
+                cout<<student[y].id<<"\t"<<studentHash[y]<<endl;
+            }
         }
 
         void displayStudent() {
@@ -193,8 +205,10 @@ class StudentMarks {
             char z;
 
             do {
-                cout << "Please Enter ID : " << endl;
-                cin >> id;
+                cout<<"Please Enter ID : " << endl;
+                cin>>id;
+
+                cin.ignore();
 
                 a = linearSearch(id);
 
@@ -234,17 +248,6 @@ class StudentMarks {
             }
 
             return -1;
-        }
-
-        // - Linear Probing Hash Table
-        void linearHashing() {
-
-            int studentHash[SIZE];
-
-            for(int x = 0; x < number; x++) {
-
-                studentHash[x] = student[x].id % SIZE;
-            }
         }
 
 };
