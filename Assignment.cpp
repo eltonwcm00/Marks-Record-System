@@ -37,6 +37,8 @@ class StudentMarks {
                     cin>>student[x].id;
                 }
 
+                cin.ignore();
+
                 cout<<"Student " << x+1 << " name : ";
                 getline(cin, student[x].name);
                 cout<<"Chemistry marks of student "<<x+1<<" : ";
@@ -185,33 +187,6 @@ class StudentMarks {
             } while(choice == 'Y' || choice == 'y');
         }
 
-        /************************** ALGORITHM **************************/
-
-        // - Linear Searching
-        int linearSearch(int value) {
-
-            for (int i = 0; i <= number; i++) {
-
-                if (student[i].id == value) {
-
-                    return i;
-                }
-            }
-
-            return -1;
-        }
-
-        // - Linear Probing Hash Table
-        void linearHashing() {
-
-            int studentHash[SIZE];
-
-            for(int x = 0; x < number; x++) {
-
-                studentHash[x] = student[x].id % SIZE;
-            }
-        }
-
         void editStudent() {
 
             int id,a;
@@ -244,6 +219,34 @@ class StudentMarks {
 
             } while (z == 'Y' || z == 'y');
         }
+
+        /************************** ALGORITHM **************************/
+
+        // - Linear Searching
+        int linearSearch(int value) {
+
+            for (int i = 0; i <= number; i++) {
+
+                if (student[i].id == value) {
+
+                    return i;
+                }
+            }
+
+            return -1;
+        }
+
+        // - Linear Probing Hash Table
+        void linearHashing() {
+
+            int studentHash[SIZE];
+
+            for(int x = 0; x < number; x++) {
+
+                studentHash[x] = student[x].id % SIZE;
+            }
+        }
+
 };
 
 int main() {
