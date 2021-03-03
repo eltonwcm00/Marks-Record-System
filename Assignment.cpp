@@ -1,76 +1,124 @@
 #include<iostream>
+#include <string>
+#include <conio.h>
 using namespace std;
 
 const int SIZE = 100;
 
 class StudentMarks {
 
-    private:
+private:
 
-        struct Student {
+    struct Student {
 
-            string name;
-            int id, chem, math, phy;
-        };
+        string name;
+        int id, chem, math, phy;
+    };
 
-        Student student[SIZE];
+    Student student[SIZE];
 
-        int number{};
+    int number{};
 
 
-    public:
+public:
 
-        StudentMarks() = default;
+    StudentMarks() = default;
 
-        void addStudent() {
+    void addStudent() {
 
-            int studentHash[SIZE];
+        int studentHash[SIZE];
 
-            cout << "How many record of students you would like to insert ? : ";
-            cin >> number;
+        cout << "How many record of students you would like to insert ? : ";
+        cin >> number;
 
-            for(int x = 0; x < number; x++) {
+        for(int x = 0; x < number; x++) {
 
-                cout << "\nStudent "<< x + 1<<" ID [In the form of 4 digits, 1XXX - 9XXX] : ";
+            cout << "\nStudent "<< x + 1<<" ID [In the form of 4 digits, 1XXX - 9XXX] : ";
+            cin >> student[x].id;
+
+            while(student[x].id < 1000 || student[x].id > 9999) {
+
+                cout << "Input out of range."<<endl<<endl;
+                cout << "Enter student "<< x + 1<<" ID again! [In the form of 4 digits, start with 1XXX] : ";
                 cin >> student[x].id;
-
-                while(student[x].id < 1000 || student[x].id > 9999) {
-
-                    cout << "Input out of range."<<endl<<endl;
-                    cout << "Enter student "<< x + 1<<" ID again! [In the form of 4 digits, start with 1XXX] : ";
-                    cin >> student[x].id;
-                }
-
-                cout << "Student " << x+1 << " name : ";
-                cin >> student[x].name;
-                cout << "Chemistry marks of student "<< x+1 <<" : ";
-                cin >> student[x].chem;
-                cout << "Physic marks of student "<< x+1 <<" : ";
-                cin >> student[x].phy;
-                cout << "Mathematics marks of student "<< x+1 <<" : ";
-                cin >> student[x].math;
-
-                cout<<endl;
             }
 
-            linearHashing();
+            cout << "Student " << x+1 << " name : ";
+            cin >> student[x].name;
+            cout << "Chemistry marks of student "<< x+1 <<" : ";
+            cin >> student[x].chem;
+            cout << "Physic marks of student "<< x+1 <<" : ";
+            cin >> student[x].phy;
+            cout << "Mathematics marks of student "<< x+1 <<" : ";
+            cin >> student[x].math;
 
+            cout<<endl;
         }
 
-        void deleteStudent() {
+        linearHashing();
 
-            Student temp[number];
-            int found = 0, ID;
-            char choice;
+    }
 
-            cout << "Please Enter Student ID to delete: ";
-            cin >> ID;
+    void deleteStudent() {
 
-            found = linearSearch(ID);
+        Student temp[number];
+        int found = 0, ID;
+        char choice;
+
+        cout << "Please Enter Student ID to delete: ";
+        cin >> ID;
+
+        found = linearSearch(ID);
+
+        if(found != -1) {
+
+            cout << "Target found"<< endl;
+            cout << "\nStudent ID: " << student[found].id;
+            cout << "\nStudent name: " << student[found].name;
+            cout << "\nSubjects mark: ";
+            cout << "\n\t1.Chemistry: " << student[found].chem;
+            cout << "\n\t1.Physics: " << student[found].phy;
+            cout << "\n\t1.Mathematics: " << student[found].math;
+
+            cout << "\n\nAre you sure want to delete? [Y/N] ";
+            cin >> choice;
+
+            if(choice == 'Y' || choice == 'y') {
+
+                for(int i = 0; i < number; i++) {
+
+                    temp[i] = student[i];
+                }
+
+                for(int i = 0; i < number; i++) {
+
+                    if(temp[i].id != ID) {
+                        student[i] = temp[i];
+                    }
+                }
+            }
+
+        } else {
+            cout << "StudentID is not found" ;
+        }
+    }
+
+
+    void searchStudent() {
+
+        int value, found = 0;
+        char choice;
+
+        do {
+
+            cout << "Please Enter Student ID to search: ";
+            cin >> value;
+            found = linearSearch(value);
 
             if(found != -1) {
 
                 cout << "Target found"<< endl;
+
                 cout << "\nStudent ID: " << student[found].id;
                 cout << "\nStudent name: " << student[found].name;
                 cout << "\nSubjects mark: ";
@@ -78,104 +126,98 @@ class StudentMarks {
                 cout << "\n\t1.Physics: " << student[found].phy;
                 cout << "\n\t1.Mathematics: " << student[found].math;
 
-                cout << "\n\nAre you sure want to delete? [Y/N] ";
-                cin >> choice;
-
-                if(choice == 'Y' || choice == 'y') {
-
-                    for(int i = 0; i < number; i++) {
-
-                        temp[i] = student[i];
-                    }
-
-                    for(int i = 0; i < number; i++) {
-
-                        if(temp[i].id != ID) {
-                            student[i] = temp[i];
-                        }
-                    }
-                }
-            
             } else {
 
                 cout << "StudentID is not found" ;
             }
+
+            cout << "Search again?[Y/N] ";
+            cin >> choice;
+
+        } while(choice != 'Y' || choice != 'y');
     }
 
+    /************************** ALGORITHM **************************/
 
-        void searchStudent() {
+    // - Linear Searching
+    int linearSearch(int value) {
 
-            int value, found = 0;
-            char choice;
+        for (int i = 0; i <= number; i++) {
 
-            do {
+            if (student[i].id == value) {
 
-                cout << "Please Enter Student ID to search: ";
-                cin >> value;
-                found = linearSearch(value);
-
-                if(found != -1) {
-
-                    cout << "Target found"<< endl;
-
-                    cout << "\nStudent ID: " << student[found].id;
-                    cout << "\nStudent name: " << student[found].name;
-                    cout << "\nSubjects mark: ";
-                    cout << "\n\t1.Chemistry: " << student[found].chem;
-                    cout << "\n\t1.Physics: " << student[found].phy;
-                    cout << "\n\t1.Mathematics: " << student[found].math;
-
-                } else {
-
-                    cout << "StudentID is not found" ;
-                }
-
-                cout << "Search again?[Y/N] ";
-                cin >> choice;
-
-            } while(choice != 'Y' || choice != 'y');
-        }
-
-        /************************** ALGORITHM **************************/
-
-        // - Linear Searching
-        int linearSearch(int value) {
-
-            for (int i = 0; i <= number; i++) {
-
-                if (student[i].id == value) {
-
-                    return i;
-                }
-
+                return i;
             }
 
-            return -1;
         }
 
-        // - Linear Probing Hash Table
-        void linearHashing() {
+        return -1;
+    }
 
-            int studentHash[SIZE];
+    // - Linear Probing Hash Table
+    void linearHashing() {
 
-            for(int x = 0; x < number; x++) {
+        int studentHash[SIZE];
 
-                studentHash[x] = student[x].id / 100;
+        for(int x = 0; x < number; x++) {
+
+            studentHash[x] = student[x].id / 100;
+        }
+    }
+    void edit(){
+        int id,a;
+        char z;
+        do{
+            cout << "Please Enter ID : " << endl;
+            cin >> id;
+            a = linearSearch(id);
+            if(a != -1){
+                cout << "Student Id : " << student[a].id << endl;
+                cout << "Student Name : ";
+                getline(cin,student[a].name);
+                cout << "Chemistry : ";
+                cin >> student[a].chem;
+                cout << "Mathematics : ";
+                cin >> student[a].math;
+                cout << "Physics : ";
+                cin >> student[a].phy;
+                cout << endl << endl;
+                z = 'n';
+            }else{
+                cout << "Id Not Found! Continue[Y/N]" << endl;
+                cin >> z;
             }
-        }
+        }while (z == 'Y' || z == 'y');
+    }
 };
 
 int main() {
 
     StudentMarks sm;
-    string name;
-    int value, found;
-    char grade;
+    int choice = 0;
+    //call class
+    cout << "Welcome to Student Marks Record" << endl << endl;
+    while(choice != 6){
+        cout << "Menu" << endl;
+        cout << "1. Add" << endl;
+        cout << "2. Edit" << endl;
+        cout << "3. Delete" << endl;
+        cout << "4. Display" << endl;
+        cout << "5. Search" << endl;
+        cout << "6. Exit" << endl << endl;
+        cout << "Please Enter Your Choice :";
+        cin >> choice;
+        if(choice == 1){
+            sm.addStudent();
+        }else if(choice == 2){
+            sm.edit();
+        }else if(choice == 3){
+            sm.deleteStudent();
+        }else if(choice == 4){
 
-    sm.addStudent();
-    sm.deleteStudent();
-    sm.searchStudent();
-
+        }else if(choice == 5){
+            sm.searchStudent();
+        }
+    }
     return 0;
 }
-
