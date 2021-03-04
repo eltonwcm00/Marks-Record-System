@@ -259,8 +259,8 @@ public:
             cout<<"\nStudent name: "<<student[found].name;
             cout<<"\nSubjects mark: ";
             cout<<"\n\t1.Chemistry: "<<student[found].chem;
-            cout<<"\n\t1.Physics: "<<student[found].phy;
-            cout<<"\n\t1.Mathematics: "<<student[found].math;
+            cout<<"\n\t2.Physics: "<<student[found].phy;
+            cout<<"\n\t3.Mathematics: "<<student[found].math;
 
             cout<<"\n\nAre you sure want to delete? [Y/N] : ";
             cin>>choice;
