@@ -412,7 +412,7 @@ int main() {
         } else if(choice == 4) {
             sm.displayStudent();
 
-        }else if(choice == 5){
+        } else if(choice == 5){
             sm.searchStudent();
         }
 
