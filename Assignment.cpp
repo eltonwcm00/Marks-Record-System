@@ -2,7 +2,7 @@
 #include <string>
 using namespace std;
 
-const int SIZE = 5;
+const int SIZE = 10;
 
 class StudentMarks {
 
@@ -13,12 +13,13 @@ private:
         int id, chem, math, phy;
     };
     int number;
-
     Student student[SIZE];
+
 public:
 
     StudentMarks() {
-        for(int i = 0; i < SIZE; i++){
+
+        for(int i = 0; i < SIZE; i++) {
             student[i].id = -1;
             student[i].name = "";
             student[i].phy = 0;
@@ -30,17 +31,18 @@ public:
     void addStudent() {
 
         //int studentHash[SIZE];
-        int id,hash,check=0;
+        int id, hash, check=0, n=0;
 
         //check if array is full
-        for(int i=0; i<SIZE; i++){
-            if(student[i].id == -1)
-            {
+        for(int i=0; i<SIZE; i++) {
+
+            if(student[i].id == -1) {
                check++;
             }
         }
 
-        if(check !=0 ){
+        if(check !=0 ) {
+
             cout<<"How many record of students you would like to insert ? : ";
             cin>>number;
 
@@ -52,12 +54,33 @@ public:
                 while(id < 1000 || id > 9999) {
 
                     cout<<"Input out of range."<<endl<<endl;
-                    cout<<"Enter student "<< x + 1<<" ID again! [In the form of 4 digits, start with 1XXX] : ";
+                    cout<<"Enter student "<< x + 1<<" ID again! [In the form of 4 digits, start with 1XXX - 9XXX] : ";
                     cin>>id;
                 }
 
+                /*hash = id % SIZE;
+                student[hash].id = id;*/
+
                 hash = id % SIZE;
-                student[hash].id = id;
+
+                while(student[hash].id != -1) {
+
+                    hash = (hash + 1) % SIZE;
+
+                    n++;
+
+                    if(n == SIZE) {
+                        break;
+                    }
+                }
+
+                if(n == SIZE) {
+                    cout<<"Hash table was full of elements\nNo Place to insert this element\n\n";
+
+                } else {
+                    student[hash].id = id;
+                }
+
                 cin.ignore();
 
                 cout<<"Student " << x+1 << " name : ";
@@ -69,13 +92,12 @@ public:
                 cout<<"Mathematics marks of student "<<x+1<<" : ";
                 cin>>student[hash].math;
 
-                cout << endl << endl << student[hash].id;
-
                 cout<<endl;
             }
-        }else{
-             cout << "Array is full !";
-         }
+
+        } else {
+            cout << "Array is full !";
+        }
         /*
         cout<<"Hash Table\n----------\n"<<endl;
         cout<<"ID\tKey Index"<<endl;
@@ -86,43 +108,62 @@ public:
         }*/
     }
 
-    void display(){
+    void displayStudent() {
+
         int count = 0,sort_choice = 0;
-        for(int i = 0; i < SIZE; i++){
+
+        for(int i = 0; i < SIZE; i++) {
             if(student[i].id != -1){
                 count++;
             }
         }
+
         Student temp[count];
         int j = 0;
-        for(int i = 0; i < SIZE; i++){
-            if(student[i].id != -1){
+
+        for(int i = 0; i < SIZE; i++) {
+
+            if(student[i].id != -1) {
                 temp[j].id = student[i].id;
                 temp[j].name = student[i].name;
                 temp[j].phy = student[i].phy;
                 temp[j].chem = student[i].chem;
                 temp[j].math = student[i].math;
+
                 j++;
-                //cout << temp[j].id << endl << temp[j].math << endl << temp[j].phy << endl << temp[j].chem;
+
             }
         }
 
-        cout<<"Select a mode : \n--------------"<<endl;
+        cout<<"Select a view mode : \n--------------------"<<endl;
 
-        cout<<"Sort By \n---------"<<endl;
-        cout<<"1. Student's ID "<<endl;
-        cout<<"2. Student's name "<<endl;
-        cout<<"3. Student's Chemistry mark"<<endl;
-        cout<<"4. Student's Physic mark "<<endl;
-        cout<<"5. Student's Mathematics mark"<<endl;
+        cout<<"0. Summary of the system's database"<<endl;
+        cout<<"1. Sorted by student's ID "<<endl;
+        cout<<"2. Sorted by student's name "<<endl;
+        cout<<"3. Sorted by student's Chemistry mark"<<endl;
+        cout<<"4. Sorted by student's Physic mark "<<endl;
+        cout<<"5. Sorted by student's Mathematics mark"<<endl;
 
         cin>>sort_choice;
 
-        while(sort_choice <= 0 || sort_choice > 5) {
+        while(sort_choice < 0 || sort_choice > 5) {
             cout<<"Invalid entry, enter your choice again"<<endl;
             cin>>sort_choice;
         }
         switch(sort_choice) {
+
+            case 0 :
+                cout<<"\nHash Table\n======================\n";
+                cout<<"\nIndex Key\tValue\n";
+                for(int y=0; y<SIZE; y++) {
+
+                    if(student[y].id == -1) {
+                        cout<<y<<"\t\t"<<"Empty"<<"\n";
+
+                    } else {
+                        cout<<y<<"\t\t"<<student[y].id <<"\n";
+                    }
+                }
 
             case 1 :
                 for(int a = 0; a < count; a++){
@@ -189,6 +230,8 @@ public:
                 }
                 break;
         }
+
+        cout<<"\n============================= System's Record =============================\n";
         cout<<"\nNo.\tStudent ID\tName\tChemistry\tPhysics\t\tMathematics"<<endl;
 
         for(int x=0; x<count; x++) {
@@ -315,8 +358,6 @@ public:
         } while (z == 'Y' || z == 'y');
     }
 
-    /************************** ALGORITHM **************************/
-
     // - Linear Searching
     int linearSearch(int value) {
 
@@ -327,7 +368,7 @@ public:
                 return i;
             }
         }
-
+        
         return -1;
     }
 
@@ -338,9 +379,11 @@ int main() {
     StudentMarks sm;
     int choice = 0;
 
-    cout<<"Welcome to Student Marks Record"<<endl;
+    cout<<"=========================================="<<endl;
+    cout<<"Welcome to MEH Student Marks Record System"<<endl;
+    cout<<"=========================================="<<endl;
 
-    do{
+    do {
 
         cout<<"\nMenu\n----\n"<<endl;
         cout<<"1. Add"<<endl;
@@ -364,11 +407,13 @@ int main() {
             sm.deleteStudent();
 
         } else if(choice == 4) {
-            sm.display();
+            sm.displayStudent();
 
         }else if(choice == 5){
             sm.searchStudent();
         }
-    }while(choice != 6);
+
+    } while(choice != 6);
+
     return 0;
 }
