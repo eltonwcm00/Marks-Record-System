@@ -12,6 +12,7 @@ private:
         string name;
         int id, chem, math, phy;
     };
+
     int number;
     Student student[SIZE];
 
@@ -113,7 +114,7 @@ public:
         int count = 0,sort_choice = 0;
 
         for(int i = 0; i < SIZE; i++) {
-            if(student[i].id != -1){
+            if(student[i].id != -1) {
                 count++;
             }
         }
@@ -166,9 +167,9 @@ public:
                 }
 
             case 1 :
-                for(int a = 0; a < count; a++){
-                    for(int b = a+1; b < count; b++){
-                        if(temp[b].id < temp[a].id){
+                for(int a = 0; a < count; a++) {
+                    for(int b = a+1; b < count; b++) {
+                        if(temp[b].id < temp[a].id) {
                             Student swap;
                             swap = temp[a];
                             temp[a] = temp[b];
@@ -179,9 +180,9 @@ public:
                 break;
 
             case 2 :
-                for(int a = 0; a < count; a++){
-                    for(int b = a+1; b < count; b++){
-                        if(temp[b].name < temp[a].name){
+                for(int a = 0; a < count; a++) {
+                    for(int b = a+1; b < count; b++) {
+                        if(temp[b].name < temp[a].name) {
                             Student swap;
                             swap = temp[a];
                             temp[a] = temp[b];
@@ -192,9 +193,9 @@ public:
                 break;
 
             case 3 :
-                for(int a = 0; a < count; a++){
-                    for(int b = a+1; b < count; b++){
-                        if(temp[b].chem < temp[a].chem){
+                for(int a = 0; a < count; a++) {
+                    for(int b = a+1; b < count; b++) {
+                        if(temp[b].chem < temp[a].chem) {
                             Student swap;
                             swap = temp[a];
                             temp[a] = temp[b];
@@ -205,9 +206,9 @@ public:
                 break;
 
             case 4 :
-                for(int a = 0; a < count; a++){
-                    for(int b = a+1; b < count; b++){
-                        if(temp[b].phy < temp[a].phy){
+                for(int a = 0; a < count; a++) {
+                    for(int b = a+1; b < count; b++) {
+                        if(temp[b].phy < temp[a].phy) {
                             Student swap;
                             swap = temp[a];
                             temp[a] = temp[b];
@@ -218,9 +219,9 @@ public:
                 break;
 
             case 5 :
-                for(int a = 0; a < count; a++){
-                    for(int b = a+1; b < count; b++){
-                        if(temp[b].math < temp[a].math){
+                for(int a = 0; a < count; a++) {
+                    for(int b = a+1; b < count; b++) {
+                        if(temp[b].math < temp[a].math) {
                             Student swap;
                             swap = temp[a];
                             temp[a] = temp[b];
@@ -262,7 +263,7 @@ public:
             cout<<"\n\t1.Physics: "<<student[found].phy;
             cout<<"\n\t1.Mathematics: "<<student[found].math;
 
-            cout<<"\n\nAre you sure want to delete? [Y/N] ";
+            cout<<"\n\nAre you sure want to delete? [Y/N] : ";
             cin>>choice;
 
             if(choice == 'Y' || choice == 'y') {
@@ -317,8 +318,9 @@ public:
                 cout<<"Student ID is not found" ;
             }
 
-            cout<<"Search again?[Y/N] ";
+            cout<<"\n\nSearch again?[Y/N] : ";
             cin>>choice;
+            cout<<endl;
 
         } while(choice == 'Y' || choice == 'y');
     }
@@ -351,7 +353,7 @@ public:
 
             } else {
 
-                cout<<"Id Not Found! Continue[Y/N]"<<endl;
+                cout<<"Id Not Found! Continue[Y/N] : "<<endl;
                 cin>>z;
             }
 
@@ -368,7 +370,7 @@ public:
                 return i;
             }
         }
-        
+
         return -1;
     }
 
@@ -392,6 +394,7 @@ int main() {
         cout<<"4. Display"<<endl;
         cout<<"5. Search"<<endl;
         cout<<"6. Exit"<<endl<<endl;
+
         cout<<"Please Enter Your Choice :";
         cin>>choice;
 
