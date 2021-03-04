@@ -2,7 +2,7 @@
 #include <string>
 using namespace std;
 
-const int SIZE = 10;
+const int SIZE = 5;
 
 class StudentMarks {
 
@@ -30,48 +30,52 @@ public:
     void addStudent() {
 
         //int studentHash[SIZE];
-        int id,hash;
+        int id,hash,check=0;
 
         //check if array is full
         for(int i=0; i<SIZE; i++){
-            if(student[i].id != -1)
+            if(student[i].id == -1)
             {
-                cout << "Array is full !";
-                return; //break out the function
+               check++;
             }
         }
-        cout<<"How many record of students you would like to insert ? : ";
-        cin>>number;
 
-        for(int x = 0; x < number; x++) {
+        if(check !=0 ){
+            cout<<"How many record of students you would like to insert ? : ";
+            cin>>number;
 
-            cout<<"\nStudent "<< x + 1<<" ID [In the form of 4 digits, 1XXX - 9XXX] : ";
-            cin>>id;
+            for(int x = 0; x < number; x++) {
 
-            while(id < 1000 || id > 9999) {
-
-                cout<<"Input out of range."<<endl<<endl;
-                cout<<"Enter student "<< x + 1<<" ID again! [In the form of 4 digits, start with 1XXX] : ";
+                cout<<"\nStudent "<< x + 1<<" ID [In the form of 4 digits, 1XXX - 9XXX] : ";
                 cin>>id;
+
+                while(id < 1000 || id > 9999) {
+
+                    cout<<"Input out of range."<<endl<<endl;
+                    cout<<"Enter student "<< x + 1<<" ID again! [In the form of 4 digits, start with 1XXX] : ";
+                    cin>>id;
+                }
+
+                hash = id % SIZE;
+                student[hash].id = id;
+                cin.ignore();
+
+                cout<<"Student " << x+1 << " name : ";
+                getline(cin, student[hash].name);
+                cout<<"Chemistry marks of student "<<x+1<<" : ";
+                cin>>student[hash].chem;
+                cout<<"Physic marks of student "<<x+1<<" : ";
+                cin>>student[hash].phy;
+                cout<<"Mathematics marks of student "<<x+1<<" : ";
+                cin>>student[hash].math;
+
+                cout << endl << endl << student[hash].id;
+
+                cout<<endl;
             }
-
-            hash = id % SIZE;
-            student[hash].id = id;
-            cin.ignore();
-
-            cout<<"Student " << x+1 << " name : ";
-            getline(cin, student[hash].name);
-            cout<<"Chemistry marks of student "<<x+1<<" : ";
-            cin>>student[hash].chem;
-            cout<<"Physic marks of student "<<x+1<<" : ";
-            cin>>student[hash].phy;
-            cout<<"Mathematics marks of student "<<x+1<<" : ";
-            cin>>student[hash].math;
-
-            cout << endl << endl << student[hash].id;
-
-            cout<<endl;
-        }
+        }else{
+             cout << "Array is full !";
+         }
         /*
         cout<<"Hash Table\n----------\n"<<endl;
         cout<<"ID\tKey Index"<<endl;
