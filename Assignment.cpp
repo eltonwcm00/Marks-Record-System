@@ -31,6 +31,15 @@ public:
 
         //int studentHash[SIZE];
         int id,hash;
+
+        //check if array is full
+        for(int i=0; i<SIZE; i++){
+            if(student[i].id != -1)
+            {
+                cout << "Array is full !";
+                return; //break out the function
+            }
+        }
         cout<<"How many record of students you would like to insert ? : ";
         cin>>number;
 
