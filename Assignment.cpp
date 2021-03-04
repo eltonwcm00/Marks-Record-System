@@ -106,7 +106,7 @@ public:
             cin>>sort_choice;
         }
 
-        for(int x=0; x<number; x++) {
+        for(int x=0; x<number; x++) {   //number=?
             temp_sorted = student[x];
             j = x;
         }
@@ -140,7 +140,7 @@ public:
 
     void deleteStudent() {
 
-        Student temp[number];
+        //Student temp[number];
         int found = 0, ID;
         char choice;
 
@@ -264,7 +264,7 @@ public:
     // - Linear Searching
     int linearSearch(int value) {
 
-        for (int i = 0; i <= number; i++) {
+        for (int i = 0; i <= SIZE; i++) {
 
             if (student[i].id == value) {
 
