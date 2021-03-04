@@ -12,10 +12,9 @@ private:
         string name;
         int id, chem, math, phy;
     };
-
-    Student student[SIZE];
     int number;
 
+    Student student[SIZE];
 public:
 
     StudentMarks() {
@@ -67,28 +66,33 @@ public:
         /*
         cout<<"Hash Table\n----------\n"<<endl;
         cout<<"ID\tKey Index"<<endl;
-
         for(int y=0; y<number; y++) {
-
             studentHash[y] = student[y].id % SIZE;
-
              linear probing implementation
-
             cout<<student[y].id<<"\t"<<studentHash[y]<<endl;
         }*/
     }
+
     void display(){
+        int count = 0,sort_choice = 0;
         for(int i = 0; i < SIZE; i++){
             if(student[i].id != -1){
-                cout << student[i].id << endl;
+                count++;
             }
         }
-    }
-
-    void displayStudent() {
-
-        Student temp_sorted;
-        int sort_choice, j;
+        Student temp[count];
+        int j = 0;
+        for(int i = 0; i < SIZE; i++){
+            if(student[i].id != -1){
+                temp[j].id = student[i].id;
+                temp[j].name = student[i].name;
+                temp[j].phy = student[i].phy;
+                temp[j].chem = student[i].chem;
+                temp[j].math = student[i].math;
+                j++;
+                //cout << temp[j].id << endl << temp[j].math << endl << temp[j].phy << endl << temp[j].chem;
+            }
+        }
 
         cout<<"Select a mode : \n--------------"<<endl;
 
@@ -105,38 +109,80 @@ public:
             cout<<"Invalid entry, enter your choice again"<<endl;
             cin>>sort_choice;
         }
-
-        for(int x=0; x<number; x++) {   //number=?
-            temp_sorted = student[x];
-            j = x;
-        }
-
         switch(sort_choice) {
 
-            case 1 : while(j>0 && temp_sorted.id < student[j-1].id) { student[j] = student[j-1]; j--; student[j] = temp_sorted; }
+            case 1 :
+                for(int a = 0; a < count; a++){
+                    for(int b = a+1; b < count; b++){
+                        if(temp[b].id < temp[a].id){
+                            Student swap;
+                            swap = temp[a];
+                            temp[a] = temp[b];
+                            temp[b] = swap;
+                        }
+                    }
+                }
                 break;
 
-            case 2 : while(j>0 && temp_sorted.name < student[j-1].name) { student[j] = student[j-1]; j--; student[j] = temp_sorted; }
+            case 2 :
+                for(int a = 0; a < count; a++){
+                    for(int b = a+1; b < count; b++){
+                        if(temp[b].name < temp[a].name){
+                            Student swap;
+                            swap = temp[a];
+                            temp[a] = temp[b];
+                            temp[b] = swap;
+                        }
+                    }
+                }
                 break;
 
-            case 3 : while(j>0 && temp_sorted.chem< student[j-1].chem) { student[j] = student[j-1]; j--; student[j] = temp_sorted; }
+            case 3 :
+                for(int a = 0; a < count; a++){
+                    for(int b = a+1; b < count; b++){
+                        if(temp[b].chem < temp[a].chem){
+                            Student swap;
+                            swap = temp[a];
+                            temp[a] = temp[b];
+                            temp[b] = swap;
+                        }
+                    }
+                }
                 break;
 
-            case 4 : while(j>0 && temp_sorted.phy< student[j-1].phy) { student[j] = student[j-1]; j--; student[j] = temp_sorted; }
+            case 4 :
+                for(int a = 0; a < count; a++){
+                    for(int b = a+1; b < count; b++){
+                        if(temp[b].phy < temp[a].phy){
+                            Student swap;
+                            swap = temp[a];
+                            temp[a] = temp[b];
+                            temp[b] = swap;
+                        }
+                    }
+                }
                 break;
 
-            case 5 : while(j>0 && temp_sorted.math< student[j-1].math) { student[j] = student[j-1]; j--; student[j] = temp_sorted; }
+            case 5 :
+                for(int a = 0; a < count; a++){
+                    for(int b = a+1; b < count; b++){
+                        if(temp[b].math < temp[a].math){
+                            Student swap;
+                            swap = temp[a];
+                            temp[a] = temp[b];
+                            temp[b] = swap;
+                        }
+                    }
+                }
                 break;
         }
-
         cout<<"\nNo.\tStudent ID\tName\tChemistry\tPhysics\t\tMathematics"<<endl;
 
-        for(int x=0; x<number; x++) {
-            cout<<x+1<<"\t"<<student[x].id<<"\t\t"<<student[x].name<<"\t\t"<<student[x].chem
-                <<"\t\t"<<student[x].phy<<"\t\t"<<student[x].math<<endl;
+        for(int x=0; x<count; x++) {
+            cout<<x+1<<"\t"<<temp[x].id<<"\t\t"<<temp[x].name<<"\t\t"<<temp[x].chem
+                <<"\t\t"<<temp[x].phy<<"\t\t"<<temp[x].math<<endl;
         }
     }
-
 
     void deleteStudent() {
 
@@ -171,12 +217,9 @@ public:
                 student[found].math = 0;
 
                 /*for(int i=0; i<number; i++) {
-
                     temp[i] = student[i];
                 }
-
                 for(int i=0; i<number; i++) {
-
                     if(temp[i].id != ID) {
                         student[i] = temp[i];
                     }
