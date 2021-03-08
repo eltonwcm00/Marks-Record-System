@@ -30,8 +30,7 @@ public:
     };
 
     void addStudent() {
-
-        //int studentHash[SIZE];
+        
         int id, hash, check=0, n=0;
 
         //check if array is full
@@ -58,9 +57,6 @@ public:
                     cout<<"Enter student "<< x + 1<<" ID again! [In the form of 4 digits, start with 1XXX - 9XXX] : ";
                     cin>>id;
                 }
-
-                /*hash = id % SIZE;
-                student[hash].id = id;*/
 
                 hash = id % SIZE;
 
@@ -99,14 +95,6 @@ public:
         } else {
             cout << "Array is full !";
         }
-        /*
-        cout<<"Hash Table\n----------\n"<<endl;
-        cout<<"ID\tKey Index"<<endl;
-        for(int y=0; y<number; y++) {
-            studentHash[y] = student[y].id % SIZE;
-             linear probing implementation
-            cout<<student[y].id<<"\t"<<studentHash[y]<<endl;
-        }*/
     }
 
     void displayStudent() {
@@ -271,16 +259,6 @@ public:
                 student[found].phy = 0;
                 student[found].chem = 0;
                 student[found].math = 0;
-
-                /*for(int i=0; i<number; i++) {
-                    temp[i] = student[i];
-                }
-                for(int i=0; i<number; i++) {
-                    if(temp[i].id != ID) {
-                        student[i] = temp[i];
-                    }
-                }*/
-
             }
 
         } else {
@@ -411,7 +389,7 @@ int main() {
         } else if(choice == 4) {
             sm.displayStudent();
 
-        } else if(choice == 5){
+        } else if(choice == 5) {
             sm.searchStudent();
         }
 
